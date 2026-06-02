@@ -1,0 +1,522 @@
+[
+  {
+    "pair_id": "pair_001",
+    "condition": "Real",
+    "context_drawing_id": 4,
+    "context_turn": 7,
+    "stroke_a_drawing_id": 4,
+    "stroke_a_turn": 8,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 4,
+      "turn": 9
+    }
+  },
+  {
+    "pair_id": "pair_002",
+    "condition": "Shuffled",
+    "context_drawing_id": 64,
+    "context_turn": 3,
+    "stroke_a_drawing_id": 64,
+    "stroke_a_turn": 4,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 60,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_003",
+    "condition": "Shuffled",
+    "context_drawing_id": 64,
+    "context_turn": 5,
+    "stroke_a_drawing_id": 64,
+    "stroke_a_turn": 6,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 51,
+      "turn": 1
+    }
+  },
+  {
+    "pair_id": "pair_004",
+    "condition": "Real",
+    "context_drawing_id": 39,
+    "context_turn": 3,
+    "stroke_a_drawing_id": 39,
+    "stroke_a_turn": 4,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 39,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_005",
+    "condition": "Real",
+    "context_drawing_id": 1,
+    "context_turn": 2,
+    "stroke_a_drawing_id": 1,
+    "stroke_a_turn": 3,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 1,
+      "turn": 4
+    }
+  },
+  {
+    "pair_id": "pair_006",
+    "condition": "Real",
+    "context_drawing_id": 31,
+    "context_turn": 7,
+    "stroke_a_drawing_id": 31,
+    "stroke_a_turn": 8,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 31,
+      "turn": 9
+    }
+  },
+  {
+    "pair_id": "pair_007",
+    "condition": "Real",
+    "context_drawing_id": 17,
+    "context_turn": 0,
+    "stroke_a_drawing_id": 17,
+    "stroke_a_turn": 1,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 17,
+      "turn": 2
+    }
+  },
+  {
+    "pair_id": "pair_008",
+    "condition": "Shuffled",
+    "context_drawing_id": 65,
+    "context_turn": 7,
+    "stroke_a_drawing_id": 65,
+    "stroke_a_turn": 8,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 43,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_009",
+    "condition": "Shuffled",
+    "context_drawing_id": 24,
+    "context_turn": 9,
+    "stroke_a_drawing_id": 24,
+    "stroke_a_turn": 10,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 22,
+      "turn": 1
+    }
+  },
+  {
+    "pair_id": "pair_010",
+    "condition": "Real",
+    "context_drawing_id": 45,
+    "context_turn": 5,
+    "stroke_a_drawing_id": 45,
+    "stroke_a_turn": 6,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 45,
+      "turn": 7
+    }
+  },
+  {
+    "pair_id": "pair_011",
+    "condition": "Real",
+    "context_drawing_id": 33,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 33,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 33,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_012",
+    "condition": "Real",
+    "context_drawing_id": 25,
+    "context_turn": 3,
+    "stroke_a_drawing_id": 25,
+    "stroke_a_turn": 4,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 25,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_013",
+    "condition": "Shuffled",
+    "context_drawing_id": 29,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 29,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 27,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_014",
+    "condition": "Real",
+    "context_drawing_id": 4,
+    "context_turn": 5,
+    "stroke_a_drawing_id": 4,
+    "stroke_a_turn": 6,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 4,
+      "turn": 7
+    }
+  },
+  {
+    "pair_id": "pair_015",
+    "condition": "Real",
+    "context_drawing_id": 6,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 6,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 6,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_016",
+    "condition": "Shuffled",
+    "context_drawing_id": 5,
+    "context_turn": 5,
+    "stroke_a_drawing_id": 5,
+    "stroke_a_turn": 6,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 61,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_017",
+    "condition": "Real",
+    "context_drawing_id": 41,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 41,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 41,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_018",
+    "condition": "Shuffled",
+    "context_drawing_id": 62,
+    "context_turn": 5,
+    "stroke_a_drawing_id": 62,
+    "stroke_a_turn": 6,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 17,
+      "turn": 7
+    }
+  },
+  {
+    "pair_id": "pair_019",
+    "condition": "Shuffled",
+    "context_drawing_id": 32,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 32,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 42,
+      "turn": 7
+    }
+  },
+  {
+    "pair_id": "pair_020",
+    "condition": "Shuffled",
+    "context_drawing_id": 15,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 15,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 5,
+      "turn": 9
+    }
+  },
+  {
+    "pair_id": "pair_021",
+    "condition": "Real",
+    "context_drawing_id": 39,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 39,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 39,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_022",
+    "condition": "Shuffled",
+    "context_drawing_id": 45,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 45,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 25,
+      "turn": 1
+    }
+  },
+  {
+    "pair_id": "pair_023",
+    "condition": "Shuffled",
+    "context_drawing_id": 62,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 62,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 6,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_024",
+    "condition": "Real",
+    "context_drawing_id": 40,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 40,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 40,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_025",
+    "condition": "Shuffled",
+    "context_drawing_id": 30,
+    "context_turn": 3,
+    "stroke_a_drawing_id": 30,
+    "stroke_a_turn": 4,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 62,
+      "turn": 7
+    }
+  },
+  {
+    "pair_id": "pair_026",
+    "condition": "Shuffled",
+    "context_drawing_id": 44,
+    "context_turn": 5,
+    "stroke_a_drawing_id": 44,
+    "stroke_a_turn": 6,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 14,
+      "turn": 1
+    }
+  },
+  {
+    "pair_id": "pair_027",
+    "condition": "Shuffled",
+    "context_drawing_id": 4,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 4,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 52,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_028",
+    "condition": "Shuffled",
+    "context_drawing_id": 45,
+    "context_turn": 3,
+    "stroke_a_drawing_id": 45,
+    "stroke_a_turn": 4,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 23,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_029",
+    "condition": "Real",
+    "context_drawing_id": 42,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 42,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 42,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_030",
+    "condition": "Real",
+    "context_drawing_id": 20,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 20,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 20,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_031",
+    "condition": "Real",
+    "context_drawing_id": 60,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 60,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 60,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_032",
+    "condition": "Shuffled",
+    "context_drawing_id": 16,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 16,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 64,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_033",
+    "condition": "Real",
+    "context_drawing_id": 23,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 23,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 23,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_034",
+    "condition": "Real",
+    "context_drawing_id": 31,
+    "context_turn": 5,
+    "stroke_a_drawing_id": 31,
+    "stroke_a_turn": 6,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 31,
+      "turn": 7
+    }
+  },
+  {
+    "pair_id": "pair_035",
+    "condition": "Real",
+    "context_drawing_id": 63,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 63,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 63,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_036",
+    "condition": "Real",
+    "context_drawing_id": 43,
+    "context_turn": 3,
+    "stroke_a_drawing_id": 43,
+    "stroke_a_turn": 4,
+    "stroke_b_source": {
+      "real": true,
+      "drawing_id": 43,
+      "turn": 5
+    }
+  },
+  {
+    "pair_id": "pair_037",
+    "condition": "Shuffled",
+    "context_drawing_id": 1,
+    "context_turn": 4,
+    "stroke_a_drawing_id": 1,
+    "stroke_a_turn": 5,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 34,
+      "turn": 1
+    }
+  },
+  {
+    "pair_id": "pair_038",
+    "condition": "Shuffled",
+    "context_drawing_id": 28,
+    "context_turn": 0,
+    "stroke_a_drawing_id": 28,
+    "stroke_a_turn": 1,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 59,
+      "turn": 3
+    }
+  },
+  {
+    "pair_id": "pair_039",
+    "condition": "Shuffled",
+    "context_drawing_id": 59,
+    "context_turn": 1,
+    "stroke_a_drawing_id": 59,
+    "stroke_a_turn": 2,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 14,
+      "turn": 1
+    }
+  },
+  {
+    "pair_id": "pair_040",
+    "condition": "Shuffled",
+    "context_drawing_id": 31,
+    "context_turn": 3,
+    "stroke_a_drawing_id": 31,
+    "stroke_a_turn": 4,
+    "stroke_b_source": {
+      "real": false,
+      "drawing_id": 7,
+      "turn": 1
+    }
+  }
+]

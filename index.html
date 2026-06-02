@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drawing Pair Rating Study</title>
+<style>
+  :root {
+    --bg: #f7f5f1;
+    --ink: #1a1a1a;
+    --rule: #c9c4ba;
+    --muted: #6e6a62;
+    --accent: #1a1a1a;
+    --selected-bg: #1a1a1a;
+    --selected-fg: #f7f5f1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; line-height: 1.5; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 32px 96px; }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 24px; margin-bottom: 32px; }
+  h1 { font-size: 22px; font-weight: normal; letter-spacing: 0.02em; margin: 0 0 8px; }
+  h2 { font-size: 18px; font-weight: normal; margin: 32px 0 16px; }
+  .small, .muted { font-size: 13px; color: var(--muted); }
+  .stage { display: none; }
+  .stage.active { display: block; }
+
+  /* Intro */
+  .intro p { margin: 12px 0; max-width: 70ch; }
+  .intro ul { max-width: 70ch; padding-left: 22px; }
+  .intro li { margin: 6px 0; }
+  button.primary {
+    background: var(--ink); color: var(--bg); border: none; padding: 12px 24px;
+    font-family: inherit; font-size: 15px; cursor: pointer; letter-spacing: 0.03em;
+    margin-top: 24px;
+  }
+  button.primary:hover { background: #333; }
+  button.secondary {
+    background: transparent; color: var(--ink); border: 1px solid var(--ink);
+    padding: 8px 16px; font-family: inherit; font-size: 13px; cursor: pointer; letter-spacing: 0.03em;
+  }
+  button.secondary:hover { background: var(--ink); color: var(--bg); }
+
+  input[type="text"] {
+    border: none; border-bottom: 1px solid var(--ink); background: transparent;
+    font-family: inherit; font-size: 15px; padding: 6px 0; min-width: 280px;
+    color: var(--ink);
+  }
+  input[type="text"]:focus { outline: none; border-bottom-width: 2px; }
+  label.field { display: block; margin: 18px 0; }
+  label.field span { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+
+  /* Trial */
+  .progress {
+    font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .progress-bar {
+    height: 2px; background: var(--rule); margin: 12px 0 32px; position: relative;
+  }
+  .progress-bar > div { height: 100%; background: var(--ink); transition: width 0.3s ease; }
+
+  .trial-img-wrap {
+    background: white; border: 1px solid var(--rule); padding: 16px;
+    margin-bottom: 32px;
+  }
+  .trial-img-wrap img { display: block; width: 100%; height: auto; }
+
+  .question {
+    font-size: 17px; margin: 16px 0 6px; max-width: 70ch;
+  }
+  .question-sub {
+    font-size: 13px; color: var(--muted); margin: 0 0 20px;
+  }
+
+  .scale {
+    display: flex; gap: 0; margin: 16px 0 8px; max-width: 760px;
+    border: 1px solid var(--ink);
+  }
+  .scale label {
+    flex: 1; text-align: center; padding: 18px 8px; cursor: pointer;
+    border-right: 1px solid var(--ink);
+    transition: background 0.15s ease, color 0.15s ease;
+    display: flex; flex-direction: column; gap: 4px; align-items: center;
+    font-size: 14px;
+  }
+  .scale label:last-child { border-right: none; }
+  .scale label .num { font-size: 22px; font-weight: normal; }
+  .scale label .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .scale label:hover { background: #eae6dd; }
+  .scale input[type="radio"] { display: none; }
+  .scale label.selected, .scale input[type="radio"]:checked + label {
+    background: var(--selected-bg); color: var(--selected-fg);
+  }
+  .scale label.selected .lbl, .scale input[type="radio"]:checked + label .lbl { color: var(--selected-fg); opacity: 0.7; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+  .nav .right { display: flex; gap: 12px; align-items: center; }
+
+  /* End */
+  .end-actions { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; }
+  textarea.results {
+    width: 100%; height: 200px; font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 12px; padding: 12px; border: 1px solid var(--rule); background: white;
+  }
+
+  /* Print/centering for narrow */
+  @media (max-width: 700px) {
+    .container { padding: 24px 16px 64px; }
+    .scale label { padding: 12px 4px; font-size: 12px; }
+    .scale label .num { font-size: 18px; }
+    .scale label .lbl { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ============================ STAGE 1: INTRO ============================ -->
+  <section class="stage active" id="stage-intro">
+    <header>
+      <h1>Drawing Pair Rating Study</h1>
+      <div class="small">A short study for a research-methods course at UdK / TU Berlin · ~15–20 minutes</div>
+    </header>
+
+    <div class="intro">
+      <p><strong>What this is.</strong> You will look at <strong>40 pairs of drawing strokes</strong>. For each pair you are asked to rate, on a scale of 1 to 5, how strongly the second stroke appears to <em>respond</em> to the first.</p>
+
+      <p><strong>What you will see.</strong> Each pair is shown as three panels side by side:</p>
+      <ul>
+        <li><em>Context (before)</em> — the state of the drawing before either stroke was added, shown in grey.</li>
+        <li><em>Stroke A</em> — the first stroke, in black.</li>
+        <li><em>Stroke B</em> — the next stroke, in black.</li>
+      </ul>
+
+      <p><strong>Your task.</strong> Ask yourself: <em>does Stroke B seem to be a reaction to Stroke A?</em> There is no right answer. Use your intuition. The whole point is that we want <strong>your</strong> reading, not a calculated one.</p>
+
+      <p><strong>Anonymity.</strong> No personal data is collected. We only ask for a short pseudonym so we can tell ratings apart. Your ratings are stored locally in your browser until you submit them at the end.</p>
+
+      <p class="muted">Best done on a desktop or tablet. Please do it in one sitting if you can.</p>
+
+      <label class="field">
+        <span>A short pseudonym (any letters/numbers, e.g. "blue42"):</span>
+        <input type="text" id="rater-id" placeholder="your pseudonym" autocomplete="off" />
+      </label>
+
+      <button class="primary" id="btn-start">Begin study</button>
+    </div>
+  </section>
+
+  <!-- ============================ STAGE 2: TRIAL ============================ -->
+  <section class="stage" id="stage-trial">
+    <div class="progress">
+      <span>Drawing pair <span id="trial-idx">1</span> of <span id="trial-total">40</span></span>
+      <span id="rater-tag" class="muted"></span>
+    </div>
+    <div class="progress-bar"><div id="progress-fill" style="width: 0%;"></div></div>
+
+    <div class="trial-img-wrap">
+      <img id="trial-img" src="" alt="Drawing pair" />
+    </div>
+
+    <p class="question">How strongly does <strong>Stroke B</strong> seem to respond to <strong>Stroke A</strong>?</p>
+    <p class="question-sub">Trust your first impression.</p>
+
+    <div class="scale" id="scale-buttons">
+      <!-- buttons injected by JS -->
+    </div>
+    <div class="small muted" style="margin-top: 4px;">
+      <span style="float:left;">1 = not at all</span>
+      <span style="float:right;">5 = clearly responds</span>
+      <span style="clear:both; display:block;"></span>
+    </div>
+
+    <div class="nav">
+      <button class="secondary" id="btn-prev">← Previous</button>
+      <div class="right">
+        <span class="small muted" id="autosave-note">Saved locally</span>
+        <button class="primary" id="btn-next">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ STAGE 3: END ============================ -->
+  <section class="stage" id="stage-end">
+    <header><h1>Thank you</h1></header>
+
+    <p>You've rated all 40 pairs. To submit your results, please either:</p>
+    <ol>
+      <li>Click <strong>Download results</strong> below and email the file to the researcher, <strong>or</strong></li>
+      <li>Click <strong>Open in email</strong> to launch your email client with the results pre-filled.</li>
+    </ol>
+
+    <div class="end-actions">
+      <button class="primary" id="btn-download">Download results (.json)</button>
+      <button class="secondary" id="btn-mailto">Open in email</button>
+      <button class="secondary" id="btn-copy">Copy to clipboard</button>
+    </div>
+
+    <p class="small muted">Your raw responses are shown below in case you want to inspect them.</p>
+    <textarea class="results" id="results-text" readonly></textarea>
+
+    <p style="margin-top: 32px;" class="small muted">
+      If you'd like, send the file to: <strong id="email-display">pietro.lugaro@example.com</strong>
+    </p>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — EDIT THESE TWO LINES BEFORE DEPLOYING
+   ============================================================ */
+const STIMULI_BASE_URL = "stimuli/";       // folder where pair_XXX.png live (relative or absolute)
+const RESEARCHER_EMAIL = "pietro.lugaro@example.com"; // replace with actual email before deploy
+const N_TRIALS         = 40;
+
+/* ============================================================
+   PRESENTATION ORDER (same for everyone for simpler analysis)
+   ============================================================ */
+// Pairs are pair_001 .. pair_040; we present them in a fixed pseudo-random order
+// derived from the same seed used in build_stimuli.py output.
+// In practice, the order in the file system already IS the randomised presentation order,
+// so we can just iterate 1..40.
+const TRIAL_ORDER = Array.from({length: N_TRIALS}, (_, i) => `pair_${String(i+1).padStart(3, '0')}`);
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let raterId = "";
+let currentIdx = 0;
+let ratings = {}; // {pair_id: 1..5}
+
+/* ============================================================
+   STORAGE
+   ============================================================ */
+function storageKey() {
+  return `acv_rater_${raterId}`;
+}
+function saveLocal() {
+  try { localStorage.setItem(storageKey(), JSON.stringify({raterId, ratings, currentIdx, ts: Date.now()})); } catch(e) {}
+}
+function loadLocal(rid) {
+  try {
+    const raw = localStorage.getItem(`acv_rater_${rid}`);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+/* ============================================================
+   STAGE NAVIGATION
+   ============================================================ */
+function showStage(name) {
+  document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+  document.getElementById('stage-' + name).classList.add('active');
+  window.scrollTo({top: 0, behavior: 'instant'});
+}
+
+/* ============================================================
+   SCALE BUILDER
+   ============================================================ */
+const SCALE_LABELS = ['not at all', 'barely', 'somewhat', 'fairly clearly', 'clearly responds'];
+function buildScale() {
+  const root = document.getElementById('scale-buttons');
+  root.innerHTML = '';
+  for (let i = 1; i <= 5; i++) {
+    const lbl = document.createElement('label');
+    lbl.innerHTML = `<span class="num">${i}</span><span class="lbl">${SCALE_LABELS[i-1]}</span>`;
+    lbl.addEventListener('click', () => selectRating(i));
+    lbl.dataset.value = i;
+    root.appendChild(lbl);
+  }
+}
+function selectRating(v) {
+  const pairId = TRIAL_ORDER[currentIdx];
+  ratings[pairId] = v;
+  document.querySelectorAll('#scale-buttons label').forEach(el => {
+    el.classList.toggle('selected', parseInt(el.dataset.value) === v);
+  });
+  saveLocal();
+  document.getElementById('autosave-note').textContent = 'Saved locally';
+}
+
+/* ============================================================
+   TRIAL RENDERING
+   ============================================================ */
+function renderTrial() {
+  const pairId = TRIAL_ORDER[currentIdx];
+  document.getElementById('trial-idx').textContent = currentIdx + 1;
+  document.getElementById('trial-total').textContent = N_TRIALS;
+  document.getElementById('trial-img').src = STIMULI_BASE_URL + pairId + '.png';
+  document.getElementById('progress-fill').style.width = ((currentIdx) / N_TRIALS * 100) + '%';
+  // Reset selection visual
+  const prev = ratings[pairId];
+  document.querySelectorAll('#scale-buttons label').forEach(el => {
+    el.classList.toggle('selected', prev !== undefined && parseInt(el.dataset.value) === prev);
+  });
+  // Update buttons
+  document.getElementById('btn-prev').disabled = currentIdx === 0;
+  document.getElementById('btn-next').textContent = (currentIdx === N_TRIALS - 1) ? 'Finish →' : 'Next →';
+  document.getElementById('rater-tag').textContent = raterId ? `· ${raterId}` : '';
+}
+
+/* ============================================================
+   NAVIGATION HANDLERS
+   ============================================================ */
+function goNext() {
+  const pairId = TRIAL_ORDER[currentIdx];
+  if (ratings[pairId] === undefined) {
+    alert('Please rate this pair before moving on.');
+    return;
+  }
+  if (currentIdx === N_TRIALS - 1) {
+    finishStudy();
+    return;
+  }
+  currentIdx++;
+  saveLocal();
+  renderTrial();
+}
+function goPrev() {
+  if (currentIdx === 0) return;
+  currentIdx--;
+  saveLocal();
+  renderTrial();
+}
+
+/* ============================================================
+   END
+   ============================================================ */
+function buildResultsBlob() {
+  const payload = {
+    schema: 'acv-rater-v1',
+    raterId,
+    completedAt: new Date().toISOString(),
+    nTrials: N_TRIALS,
+    ratings,  // {pair_001: 4, pair_002: 2, ...}
+  };
+  return JSON.stringify(payload, null, 2);
+}
+function finishStudy() {
+  document.getElementById('results-text').value = buildResultsBlob();
+  document.getElementById('email-display').textContent = RESEARCHER_EMAIL;
+  showStage('end');
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.getElementById('btn-start').addEventListener('click', () => {
+  const rid = document.getElementById('rater-id').value.trim().replace(/[^a-zA-Z0-9_-]/g, '');
+  if (!rid) { alert('Please enter a short pseudonym (letters/numbers only).'); return; }
+  raterId = rid;
+  // resume if there is saved state
+  const saved = loadLocal(rid);
+  if (saved && Object.keys(saved.ratings || {}).length > 0) {
+    if (confirm('We found a previous session for this pseudonym. Resume where you left off?')) {
+      ratings = saved.ratings || {};
+      currentIdx = Math.min(saved.currentIdx || 0, N_TRIALS - 1);
+    }
+  }
+  buildScale();
+  renderTrial();
+  showStage('trial');
+});
+
+document.getElementById('btn-next').addEventListener('click', goNext);
+document.getElementById('btn-prev').addEventListener('click', goPrev);
+
+document.getElementById('btn-download').addEventListener('click', () => {
+  const blob = new Blob([buildResultsBlob()], {type: 'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = `acv_ratings_${raterId}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('btn-mailto').addEventListener('click', () => {
+  const body = encodeURIComponent('Hi,\n\nHere are my ratings for the drawing pair study.\n\n' + buildResultsBlob());
+  const subj = encodeURIComponent(`ACV Rater Study results - ${raterId}`);
+  window.location.href = `mailto:${RESEARCHER_EMAIL}?subject=${subj}&body=${body}`;
+});
+
+document.getElementById('btn-copy').addEventListener('click', () => {
+  const t = document.getElementById('results-text');
+  t.select();
+  document.execCommand('copy');
+  document.getElementById('btn-copy').textContent = 'Copied!';
+  setTimeout(() => { document.getElementById('btn-copy').textContent = 'Copy to clipboard'; }, 1500);
+});
+
+// keyboard shortcuts: 1..5 to rate, arrows to navigate
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('stage-trial').classList.contains('active')) return;
+  if (e.key >= '1' && e.key <= '5') { selectRating(parseInt(e.key)); }
+  else if (e.key === 'ArrowRight' || e.key === 'Enter') { goNext(); }
+  else if (e.key === 'ArrowLeft') { goPrev(); }
+});
+</script>
+</body>
+</html>
